@@ -137,8 +137,7 @@ histdb-fzf-widget() {
     esac
     mode=$((($mode % $#modes) + 1))
     result=( "${(f@)$( histdb-fzf-query ${cmd_opts} |
-      FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $ORIG_FZF_DEFAULT_OPTS --ansi --header='$typ 
-${bold_color}F1: session F2: directory F3: global${reset_color}' -n2.. --with-nth=2.. --tiebreak=index --expect='esc,ctrl-r,f1,f2,f3' --print-query --preview='source ${FZF_HISTDB_FILE}; histdb-detail ${HISTDB_FILE} {1}' --preview-window=right:50%:wrap --ansi --no-hscroll --query=${query} +m" $(__fzfcmd))}" )
+      FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $ORIG_FZF_DEFAULT_OPTS --ansi -n2.. --with-nth=2.. --tiebreak=index --expect='esc,ctrl-r,f1,f2,f3' --print-query --preview='source ${FZF_HISTDB_FILE}; histdb-detail ${HISTDB_FILE} {1}' --preview-window=right:50%:wrap --ansi --no-hscroll --query=${query} +m" $(__fzfcmd))}" )
     query=$result[1]
     exitkey=${result[2]}
     fzf_selected="${(j: :)${(@z)result[3]}[@]:2}"
