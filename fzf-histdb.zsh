@@ -109,12 +109,8 @@ histdb-fzf-widget() {
   ORIG_FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS
   query=${(qqq)LBUFFER}
   origquery=${LBUFFER}
-  modes=('session' 'loc' 'global')
-  if [[ -z ${HISTDB_SESSION} ]];then
-    mode=2
-  else
-    mode=1
-  fi
+  modes=('global' 'session' 'loc')
+  mode=0
   exitkey='ctrl-r'
   setopt localoptions noglobsubst noposixbuiltins pipefail 2> /dev/null
   while [[ "$exitkey" != "" && "$exitkey" != "esc" ]]; do
