@@ -47,7 +47,7 @@ from
   left join commands on history.command_id = commands.id
   left join places on history.place_id = places.id
 ${where:+where ${where}}
-group by history.command_id, history.place_id
+group by commands.argv
 order by max_start desc)
 order by max_start desc"
 
